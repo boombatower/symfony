@@ -70,7 +70,7 @@ class Process
 
     private $useFileHandles = false;
     /** @var PipesInterface */
-    private $processPipes;
+    public $processPipes;
 
     private $latestSignal;
 
