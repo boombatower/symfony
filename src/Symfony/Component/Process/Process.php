@@ -1223,6 +1223,19 @@ class Process
     }
 
     /**
+     * Returns PipesInterface for underlying process.
+     *
+     * Useful for performing stream operations directly on the pipes. For
+     * example performing a stream_select() across multiple processes.
+     *
+     * Obviously, closing or altering pipes may cause errors.
+     */
+    public function getPipes()
+    {
+        return $this->processPipes;
+    }
+
+    /**
      * Returns whether PTY is supported on the current operating system.
      *
      * @return bool
