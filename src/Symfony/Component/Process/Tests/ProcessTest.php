@@ -1166,6 +1166,17 @@ class ProcessTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testInteractiveInput()
+    {
+        $p = $this->getProcess('read && echo done');
+        $p->setInputInteractive(true);
+        $p->start();
+        $p->appendInputBuffer(PHP_EOL);
+        $this->assertTrue($p->isRunning()); // trigger read/write
+        usleep(100000);
+        $this->assertFalse($p->isRunning());
+    }
+
     /**
      * @param string      $commandline
      * @param null|string $cwd
