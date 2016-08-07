@@ -1229,9 +1229,15 @@ class Process
      * example performing a stream_select() across multiple processes.
      *
      * Obviously, closing or altering pipes may cause errors.
+     *
+     * @throws LogicException In case the process is not running
      */
     public function getPipes()
     {
+        if ($this->isRunning()) {
+            throw new LogicException('Process pipes are not available while the process is not running.');
+        }
+
         return $this->processPipes;
     }
 
