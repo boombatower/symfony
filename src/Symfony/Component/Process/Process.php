@@ -1097,7 +1097,7 @@ class Process
      *
      * @return self The current Process instance
      *
-     * @throws LogicException In case the process not is running or not interactive
+     * @throws LogicException In case the process is not running or not interactive
      * @throws LogicException In case the buffer is a resource
      */
     public function appendInputBuffer($buffer)
